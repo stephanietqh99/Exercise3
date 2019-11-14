@@ -122,6 +122,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinnerAge.setSelection(0)
         radioButtonFemale.setChecked(false)
         radioButtonMale.setChecked(false)
-        textViewPremium.text = null
+        textViewPremium.text = getString(R.string.insurance_premium)
     }
 }
