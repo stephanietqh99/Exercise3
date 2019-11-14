@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -110,14 +110,18 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 else -> 300 //more than 55
             }
         }
+
+
         val totalInsurance = (premium + extraPaymentMale + extraPaymentSmoker)
-        textViewPremium.text = getString(R.string.insurance_premium) + totalInsurance
-    }
+        val symbol = Currency.getInstance(Locale.getDefault()).symbol
+        textViewPremium.text = getString(R.string.insurance_premium) + String.format("%s %d", symbol, premium)
+}
 
     fun reset(view: View) {
         checkBoxSmoker.setChecked(false)
         spinnerAge.setSelection(0)
         radioButtonFemale.setChecked(false)
         radioButtonMale.setChecked(false)
+        textViewPremium.text = null
     }
 }
